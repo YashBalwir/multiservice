@@ -146,12 +146,12 @@
       <h3 class="title mb-4">Drop Us a Message</h3>
       <div class="row">
         <div class="col-md-8 contact-form">
-          <form id="ams" name="ams">
-            <input type="text" class="form-control" name="name" placeholder="Name" /><br />
-            <input type="email" class="form-control" name="sender" placeholder="E-mail" /><br />
-            <input type="text" class="form-control" name="subject" placeholder="Equipment Name" /><br />
+          <form id="ams" name="ams" method="post" autocomplete="off">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" /><br />
+            <input type="email" class="form-control" id="sender" name="sender" placeholder="E-mail" /><br />
+            <input type="text" class="form-control" id="subject" name="subject" placeholder="Equipment Name" /><br />
             <div class="">
-              <button class="btn btn-primary btn-style" onclick="send_data()">Submit now</button>
+              <button type="submit" class="btn btn-primary btn-style" onclick="send_data()">Submit now</button>
             </div>
           </form>
         </div>
@@ -356,6 +356,22 @@
   <!-- disable body scroll which navbar is in active -->
   <script src="assets/js/wp_intregate.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
+
+
+  <!-- Sheets Script-->
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwXy14vu_XQQDec_awSWyDIQc4u7U1yTv3FVkJnRBOcL1lgVeE/exec'
+    const form = document.forms['ams']
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 

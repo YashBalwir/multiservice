@@ -76,7 +76,7 @@
       <!--<h3 class="title mb-4">Add To Cart</h3>-->
       <div class="row">
         <div class="col-md-8 contact-form">
-          <form id="ams_q" name="ams_q" method="post">
+          <form id="ams_q" name="ams" method="post" autocomplete="off">
             <button id="btnspecial" class="btn btn-style"><a  href="index.html" style="color:blue;" >More Products</a></button><br /><br />  
             <input type="text" class="form-control" name="Name" placeholder="Name" required/><br />
             <input type="text" class="form-control" name="Mobile" placeholder="Mobile Number" required/><br />
@@ -345,6 +345,22 @@
     document.getElementById('equip').innerHTML=quote_list;
   }
     </script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwXy14vu_XQQDec_awSWyDIQc4u7U1yTv3FVkJnRBOcL1lgVeE/exec'
+  const form = document.forms['ams']
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 </body>
 
 </html>
